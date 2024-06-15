@@ -35,18 +35,19 @@ void print(Node *&head)
 
 Node *deleteHead(Node *head)
 {
-    if (head == nullptr || head->next == nullptr)
+    if (head == nullptr)
     {
         return nullptr;
     }
-    // if (head->next == nullptr)
-    // {
-    //     delete head;
-    //     return nullptr;
-    // }
+    if (head->next == nullptr)
+    {
+        delete head;
+        return nullptr;
+    }
     Node *temp = head;
     head = head->next;
     head->prev = nullptr;
+    temp->next = nullptr;
     delete temp;
     return head;
 }
@@ -75,7 +76,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    vector<int> arr = {5};
+    vector<int> arr = {1,3,4,5,6,7,5,4};
     Node* head = convertToDoublyLL(arr);
 
     print(head);
